@@ -1,0 +1,33 @@
+# --- QMIX specific parameters ---
+
+# use epsilon greedy action selector
+action_selector: "epsilon_greedy"
+epsilon_start: 1.0
+epsilon_finish: 0.05
+#epsilon_anneal_time: 50000
+epsilon_anneal_time: 100000
+
+runner: "episode"
+
+buffer_size: 5000
+
+# update the target network every {} episodes
+target_update_interval: 200
+
+# use the Q_Learner to train
+agent_output_type: "q"
+learner: "q_learner"
+double_q: True
+mixer: "qmix"
+mixing_embed_dim: 32
+hypernet_layers: 2
+hypernet_embed: 64
+
+# PF-RNN hyperparameters
+agent: "pfrnn" # PF rnn agent
+num_particles: 30
+ext_obs: 32
+ext_act: 32
+resamp_alpha: 0.5
+
+name: "qmix_pfrnn"
