@@ -1,46 +1,39 @@
-# Weighted QMIX: Expanding Monotonic Value Function Factorisation (NeurIPS 2020)
+# Hidden Attacks in Multi-Agent Reinforcement Learning
 
-Based on PyMARL (https://github.com/oxwhirl/pymarl/). Please refer to that repo for more documentation.
+![isaac_60](https://github.com/Anemosx/master-isaac/blob/main/isaac_60.gif)
 
-This repo contains the cleaned-up code that was used in "Weighted QMIX: Expanding Monotonic Value Function Factorisation" (https://arxiv.org/abs/2006.10800).
+## Abstract
+Multi-Agent Reinforcement Learning has become more and more important in recent
+years. Whether in the areas of logistics, robotics or transportation, everywhere the objective
+is to increase the performance. While this has been the main focus, the question
+of robustness and resilience of such agents has become increasingly relevant. Adversarial
+Attacks can often affect agents, resulting in a decrease in performance or even total failure.
+While many works around Adversarial Attacks have been focused on the perception
+and/or the environment, the attack vector originating from agents has been less investigated.
+This may involve agents being affected by safety issues, such as malfunctions
+or outages. On the other hand, agents may also be manipulated by external malicious
+intent. In this work we will take a closer look at the security aspect and the resulting
+impact of such externally compromised agents (attackers) on other actors (protagonists).
+In this process we introduce Infiltrating Stealth Agent Attack Controller (ISAAC), a new
+approach which leverages this attack vector to reduce the performance of the protagonists
+while at the same time remaining hidden with respect to external observers. For
+this purpose we design our Adversarial Attack to be natural and a black box attack, thus
+representing a scenario which is as close to real life as possible. Thereby we simulate a
+malicious attack that does not possess any additional information or knowledge regarding
+the protagonists. In order to evaluate ISAAC, we will look at various state-of-the-art
+algorithms and perform attacks on them. Additionally, to measure the success of our
+approach using a number of different metrics, we will utilize several scenarios from the
+StarCraft Multi-Agent Challenge (SMAC). In the SMAC environments agents have to
+cooperate with each other to be successful in a continuous setting. During this process
+we will observe that for various algorithms ISAAC is able to significantly decrease the
+performance of the protagonists while remaining hidden. As a result we provide a benchmark
+tool to study and measure the robustness and resilience of algorithms in multi-agent
+systems with respect to Adversarial Attacks originating from agents.
 
-## Included in this repo
+[Presentation](https://github.com/Anemosx/master-isaac/blob/main/master_isaac_pres.pdf)
 
-In particular implementations for:
-- OW-QMIX
-- CW-QMIX
-- Versions of DDPG & SAC used in the paper
+[Full Thesis](https://github.com/Anemosx/master-isaac/blob/main/Masterthesis_ISAAC.pdf)
 
-We thank the authors of "QPLEX: Duplex Dueling Multi-Agent Q-Learning" (https://arxiv.org/abs/2008.01062) for their implementation of QPLEX (https://github.com/wjh720/QPLEX/), whose implementation we used. The exact implementation we used is included in this repo.
+![trade_off_isaac](https://github.com/Anemosx/master-isaac/blob/main/isaac_trade_off.png?raw=true)
 
-Note that in the repository the naming of certain hyper-parameters and concepts is a little different to the paper:
-- &alpha; in the paper is `w` in the code
-- Optimistic Weighting (OW) is referred to as `hysteretic_qmix`
-
-## For all SMAC experiments we used SC2.4.6.2.69232 (not SC2.4.10). The underlying dynamics are sufficiently different that you **cannot** compare runs across the 2 versions!
-The `install_sc2.sh` script will install SC2.4.6.2.69232.
-
-## Running experiments
-
-The config files (`src/config/algs/*.yaml`) contain default hyper-parameters for the respective algorithms.
-These were changed when running the experiments for the paper (`epsilon_anneal_time = 1000000` for the robustness to exploration experiments, and `w=0.1` for the predator prey punishment experiments for instance).
-Please see the Appendix of the paper for the exact hyper-parameters used. 
-
-Set `central_mixer=atten` to get the modified mixing network architecture that was used for the final experiment on `corridor` in the paper.
-
-As an example, to run the OW-QMIX on 3s5z with epsilon annealed over 1mil timesteps using docker:
-```shell
-bash run.sh $GPU python3 src/main.py --config=ow_qmix --env-config=sc2 with env_args.map_name=3s5z w=0.5 epsilon_anneal_time=1000000
-```
-
-## Citing
-
-Bibtex:
-```
-@inproceedings{rashid2020weighted,
-  title={Weighted QMIX: Expanding Monotonic Value Function Factorisation},
-  author={Rashid, Tabish and Farquhar, Gregory and Peng, Bei and Whiteson, Shimon},
-  booktitle={Advances in Neural Information Processing Systems},
-  year={2020}
-}
-```
+![position_isaac](https://github.com/Anemosx/master-isaac/blob/main/isaac_positioning.png?raw=true)
