@@ -37,3 +37,19 @@ systems with respect to Adversarial Attacks originating from agents.
 ![trade_off_isaac](https://github.com/Anemosx/master-isaac/blob/main/isaac_trade_off.png?raw=true)
 
 ![position_isaac](https://github.com/Anemosx/master-isaac/blob/main/isaac_positioning.png?raw=true)
+
+
+## Citation
+
+If you find this work useful, please cite it as follows:
+
+```bibtex
+@misc{unterauer2022isaac,
+      title={Hidden Attacks in Multi-Agent Reinforcement Learning}, 
+      author={Arnold Unterauer},
+      year={2022},
+      eprint={},
+      archivePrefix={},
+      primaryClass={},
+      url={https://github.com/Anemosx/isaac} 
+}
